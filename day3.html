@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Learning Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #194d9c;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f1c40f;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        img {
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        form input, form select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #27ae60;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #2c3e50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>Kuncha Venkata Sai Karthik</h1>
+    <p>Andhra Pradesh | +91 7337207919 | saikarthikkuncha@gmail.com</p>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#register">Register</a>
+    </nav>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>Career Objective</h2>
+    <p>
+        Recent <b>Computer Science graduate</b> with <i>Python skills</i> seeking an 
+        entry-level role to apply technical knowledge and contribute to 
+        <u>innovative software solutions</u>.
+    </p>
+
+    <center><h2>About Me</h2> <br> 
+        <img src="assets/karthik.jpeg" alt="sai karthik" width="300" height="330">
+    <br>
+    <h3>sai karthik</h3>
+</center>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2>Skills</h2>
+
+    <h3>Frontend</h3>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+    </ul>
+
+    <h3>Backend</h3>
+    <ul>
+        <li>Python</li>
+    </ul>
+
+    <h3>Database</h3>
+    <ul>
+        <li>SQL</li>
+    </ul>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+    <h2>Education</h2>
+
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>Course</th>
+            <th>Institution</th>
+            <th>CGPA</th>
+        </tr>
+
+        <tr>
+            <td>2021–2025</td>
+            <td>B.Tech Computer Science</td>
+            <td>Hindustan University, Chennai</td>
+            <td>7.6</td>
+        </tr>
+
+        <tr>
+            <td>2019–2021</td>
+            <td>Intermediate</td>
+            <td>Sri Chaitanya Junior College</td>
+            <td>7.2</td>
+        </tr>
+
+        <tr>
+            <td>2018–2019</td>
+            <td>10th Standard</td>
+            <td>Silver Bells EM High School</td>
+            <td>9.8</td>
+        </tr>
+    </table>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Projects</h2>
+
+    <h3>AI-Powered Intelligent Network Slicing</h3>
+    <p><b>Duration:</b> July – Sep 2023</p>
+
+    <p>
+        Developed AI-driven cloud-based network slicing for adaptive resource allocation.
+        Built interfaces to analyze latency, bandwidth, and throughput.
+    </p>
+
+    <p><b>Technologies:</b> TensorFlow, NumPy, Flask, SciPy</p>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+    <h2>Trainings & Certifications</h2>
+
+    <ul>
+        <li>Data Science with Python – PERSONIFWY</li>
+        <li>Web Developer – Code Alpha</li>
+    </ul>
+</section>
+
+<!-- LANGUAGES -->
+<section>
+    <h2>Languages</h2>
+    <ul>
+        <li>Telugu (Native)</li>
+        <li>English (Fluent)</li>
+        <li>Tamil (Conversational)</li>
+    </ul>
+</section>
+
+<!-- FORM -->
+<section id="register">
+    <h2>Student Registration Form</h2>
+
+    <form>
+        Name:
+        <input type="text" placeholder="Enter your name">
+
+        Email:
+        <input type="email" placeholder="Enter your email"> <br> <br>
+
+        Password:
+        <input type="password"> <br> <br>
+
+        Gender:
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female <br> <br>
+
+        Skills:
+        <input type="checkbox"> HTML
+        <input type="checkbox"> CSS
+        <input type="checkbox"> Python <br> <br>
+
+        Branch:
+        <select>
+            <option>CSE</option>
+            <option>ECE</option>
+            <option>EEE</option>
+        </select>
+
+        <br><br>
+        <input type="submit" value="Register">
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Kuncha Venkata Sai Karthik</p>
+</footer>
+
+</body>
+</html>
