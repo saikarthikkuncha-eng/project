@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGA TASK - Chocolate Website</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-background.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .header-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 80px;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 36px;
+            color: white;
+        }
+        .logo span {
+            font-weight: 400;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-menu ul li a {
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-menu ul li a.active {
+            border-bottom: 2px solid white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-circle {
+            background-color: #fce1e6; 
+            color: #1a1a1a;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .social-circle:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .title-img-overlay {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            max-width: 1000px;
+        }
+         .artisan-section {
+            background-color: #ffffff;
+            padding: 140px 20px;
+            font-family: 'Lora', serif;
+            overflow: hidden;
+        }
+
+        .artisan-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 120px;
+        }
+        .artisan-images-wrapper {
+            position: relative;
+            width: 45%; 
+            max-width: 500px; 
+        }
+
+        .img-main {
+            width: 100%;
+            display: block;
+            border: 15px solid #ffffff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        .artisan-text-wrapper {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .artisan-text-wrapper h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem; 
+            color: #232c35; 
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .artisan-text-wrapper h2 span {
+            font-style: italic; 
+            display: block;
+        }
+
+        .artisan-text-wrapper p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #7a7a7a;
+            margin-bottom: 45px;
+            max-width: 520px; 
+        }
+
+        .btn-read-all {
+            display: inline-block;
+            padding: 18px 45px;
+            border: 1px solid #111;
+            color: #111;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 5px; 
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-read-all:hover {
+            background-color: #111;
+            color: #ffffff;
+        }
+        .chocolate-grid-section {
+            padding: 80px 20px 80px 20px;
+        }
+
+        .grid-container {
+            border: 1px solid #e0e0e0;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease-out; 
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .hover-state {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+            pointer-events: none; /* Allows clicks to pass through to the image/parent */
+        }
+
+        .grid-item:hover .hover-state {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.45); 
+        }
+
+        .hover-text-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .hover-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #fff;
+            margin: 0;
+            transform: scale(0.85); 
+            transition: transform 0.4s ease-out;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .hover-title {
+            font-size: 2.2em;
+            line-height: 1.1;
+        }
+
+        .hover-subtitle {
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        .grid-item:hover .hover-text {
+            transform: scale(1);
+        }
+
+        .flavor-features {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .flavor-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .flavor-item {
+            flex: 1;
+            min-width: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .image-circle {
+            width: 200px;
+            height: 200px;;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .image-circle img {
+            width: 120%; 
+            max-width: 200px;
+            position: absolute;
+        }
+
+        .flavor-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #1a1a1a;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .flavor-item h3 i {
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .flavor-item p {
+            font-size: 15px;
+            color: #777;
+            line-height: 1.7;
+            max-width: 250px;
+        }
+        .video-section {
+            position: relative;
+            width: 100%;
+            height: 70vh; 
+            min-height: 500px;
+            background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/video-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .video-section:hover {
+            transform: scale(1.09);
+        }
+        .play-button-wrapper {
+            position: relative;
+            z-index: 2;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .play-button-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .play-ring {
+            width: 110px;
+            height: 110px;
+            border: 1px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .play-inner-circle {
+            width: 80px;
+            height: 80px;
+            background-color: #ffdae9; 
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .play-button-wrapper:hover .play-inner-circle {
+            background-color: #ffcce0; 
+        }
+
+        .play-inner-circle i {
+            color: #000000;
+            font-size: 24px;
+            margin-left: 6px;
+        }
+
+        .reviews-section {
+            position: relative;
+            padding: 130px 20px;
+            text-align: center;
+            background-color: #ffffff;
+            overflow: hidden; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .reviews-container {
+            position: relative;
+            z-index: 1; 
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .reviews-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #232c35;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .reviews-container h2 i {
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .reviews-container p {
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: #777;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            padding: 0 20px;
+        }
+
+        .author-name {
+            font-family: 'Lora', serif;
+            font-size: 18px;
+            color: #111;
+            margin-bottom: 30px;
+        }
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .slider-controls button {
+            background: transparent;
+            border: 1px solid #444;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #444;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .slider-controls button:hover {
+            background-color: #232c35;
+            color: #ffffff;
+            border-color: #232c35;
+        }
+        .map-section {
+            width: 100%;
+            height: 80vh; 
+            display: block;
+            background-color: #111; 
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
+        }
+
+        .contact-section {
+            background-color: #ffffff;
+            padding: 100px 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 100px;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-container {
+           position: relative;
+            width: 100%;
+            margin-top: -300px;
+            max-width: 1000px;
+            background-color: #ffffff;
+            padding: 60px;
+            height: 600px;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4); 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .form-left-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #dcdcdc;
+            background-color: transparent;
+            padding: 10px 0;
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: #000;
+            margin-top: 5px;
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .form-group textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .send-btn-wrapper {
+            margin-top: 20px;
+        }
+
+        .send-btn {
+            background-color: transparent;
+            border: 1px solid #1a1a1a;
+            padding: 15px 40px;
+            font-family: 'Lora', serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-left: 130px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .form-right-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .form-heading {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 42px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        .form-heading span {
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .form-text {
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+
+        .address-info {
+            font-family: 'Lora', serif;
+            font-size: 15px;
+            color: #444;
+            margin: 6px 0;
+            line-height: 1.5;
+        }
+        .bottom-banner-section {
+            width: 100%;
+            height: 100vh; 
+            min-height: 400px;
+            background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/background-img-2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-section {
+            background-color: #ffffff;
+            padding: 100px 20px;
+            padding-top: 0;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover; 
+            transition: transform 0.4s ease; 
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); 
+            opacity: 0; 
+            transition: opacity 0.4s ease;
+            pointer-events: none; 
+            z-index: 1;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        .site-footer {
+            background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/footer-img.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 80px 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65); 
+            z-index: 1;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .footer-logo span {
+            font-weight: 400;
+        }
+
+        .footer-text {
+            font-family: 'Lora', serif;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #eaeaea;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-circle {
+            background-color: #fce1e6; 
+            color: #1a1a1a;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .footer-social-circle:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        
+        .fixed-right-tags {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 9999; 
+            display: flex;
+            flex-direction: column;
+            box-shadow: -2px 2px 15px rgba(0,0,0,0.15);
+        }
+
+        .tag-box {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .tag-box:hover {
+            opacity: 0.9;
+        }
+
+        .tag-demo {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            gap: 8px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .tag-demo .number {
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        .tag-demo .text {
+            font-size: 11px;
+            line-height: 1.1;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tag-buy {
+            background-color: #f00047; 
+            color: #ffffff;
+            gap: 12px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .tag-buy i {
+            font-size: 16px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            border: 1px solid #686363;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            text-decoration: none;
+            z-index: 9998;
+            background-color: rgba(255, 255, 255, 0.2); 
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <header class="header-bar">
+            <div class="logo">bridge</div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" class="active">HOME</a></li>
+                    <li><a href="#">TEAM</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="#" class="social-circle facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-circle twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-circle instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </header>
+        
+        <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-graphic-3.png" alt="Choco cream title" class="title-img-overlay">
+   
+    </section>
+    <section class="artisan-section">
+        <div class="artisan-container">
+            
+            <div class="artisan-images-wrapper">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/h1-img-1.jpg" alt="Artisan Boulangerie" class="img-main">
+            </div>
+
+            <div class="artisan-text-wrapper">
+                <h2><span>Artisan</span> chocolatier</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation</p>
+                <a href="#" class="btn-read-all">READ ALL</a>
+            </div>
+
+        </div>
+    </section>
+    <section class="chocolate-grid-section">
+        <div class="grid-container">
+            
+            <div class="grid-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-1.jpg" alt="Chocolate truffles on cocoa powder">
+                <div class="hover-state">
+                    <div class="overlay"></div>
+                    <div class="hover-text-wrap">
+                        <div class="hover-text hover-title">Love</div>
+                        <div class="hover-text hover-subtitle">Chocolate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-2.jpg" alt="Chocolate blocks and truffles">
+                <div class="hover-state">
+                    <div class="overlay"></div>
+                    <div class="hover-text-wrap">
+                        <div class="hover-text hover-title">Workshop</div>
+                        <div class="hover-text hover-subtitle">Registration</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-3.jpg" alt="Hands crafting fine chocolate shaves">
+                <div class="hover-state">
+                    <div class="overlay"></div>
+                    <div class="hover-text-wrap">
+                        <div class="hover-text hover-title">Think</div>
+                        <div class="hover-text hover-subtitle">Chocolate</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="flavor-features">
+        <div class="flavor-container">
+            
+            <div class="flavor-item">
+                <div class="image-circle">
+                    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-1.jpg" alt="Peper and sweet chocolate">
+                </div>
+                <h3><i>Peper</i> & sweet</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+            </div>
+            <div class="flavor-item">
+                <div class="image-circle">
+                    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-2.jpg" alt="Mint and sweet chocolate">
+                </div>
+                <h3><i>Mint</i> & sweet</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+            </div>
+
+            <div class="flavor-item">
+                <div class="image-circle">
+                    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-3.jpg" alt="Hazelnut caramel chocolate">
+                </div>
+                <h3><i>Hazelnut</i> caramel</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+            </div>
+
+            <div class="flavor-item">
+                <div class="image-circle">
+                    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-4.jpg" alt="Chilli and sweet chocolate">
+                </div>
+                <h3><i>Chilli</i> & sweet</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
+            </div>
+
+        </div>
+    </section>
+    <section class="video-section">
+        
+        <a href="https://vimeo.com/109264555" target="_blank" class="play-button-wrapper">
+            <div class="play-ring">
+                <div class="play-inner-circle">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+        </a>
+
+    </section>
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <h2><i>Chocolate</i> reviews</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+            
+            <div class="author-name">Medison Jon</div>
+            
+            <div class="slider-controls">
+                <button aria-label="Previous Review"><i class="fas fa-chevron-left"></i></button>
+                <button aria-label="Next Review"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+    </section>
+    <section class="map-section">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106020.30607624131!2d151.130985586616!3d-33.84752538466144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sSydney%20NSW%2C%20Australia!5e0!3m2!1sen!2sus!4v1714582121345!5m2!1sen!2sus" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            
+            <!-- Left form column -->
+            <div class="form-left-col">
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <div class="send-btn-wrapper">
+                    <button class="send-btn" type="submit">SEND</button>
+                </div>
+            </div>
+
+            <div class="form-right-col">
+                <h2 class="form-heading"><span>Visit</span> our shops</h2>
+                <p class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <p class="address-info">09:00-19h Monday – Friday</p>
+                <p class="address-info">75-11 Jewett Ave Jersey City, NJ 07304 USA</p>
+                <p class="address-info">+ (1) 555 678 786</p>
+            </div>
+
+        </div>
+    </section>
+     <section class="bottom-banner-section">
+    </section>
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-1-700x948.jpg" alt="Gallery Image 1 - Hazelnut Chocolate">
+            </div>
+            <div class="gallery-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-2-700x948.jpg" alt="Gallery Image 2 - Stacked Chocolate Blocks with Drizzle">
+            </div>
+            <div class="gallery-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-3-700x948.jpg" alt="Gallery Image 3 - Dark Chocolate Truffles and Almonds">
+            </div>
+            <div class="gallery-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-4-700x948.jpg" alt="Gallery Image 4 - Hazelnut Chocolate and Nuts">
+            </div>
+            <div class="gallery-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-5-700x948.jpg" alt="Gallery Image 5 - Chocolate Spoon and Pieces on Marble">
+            </div>
+            <div class="gallery-item">
+                <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-6-700x948.jpg" alt="Gallery Image 6 - Hazelnut Chocolate and Truffles">
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">bridge</div>
+            <div class="footer-text">
+                © Copyright Qode Interactive — All Rights Reserved<br>
+                Proudly Made For You.
+            </div>
+            <div class="footer-socials">
+                <a href="#" class="footer-social-circle" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="footer-social-circle" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="footer-social-circle" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed-right-tags">
+        <a href="#" class="tag-box tag-demo">
+            <span class="number">630+</span>
+            <span class="text">Bridge<br>demos</span>
+        </a>
+        <a href="#" class="tag-box tag-buy">
+            <i class="fas fa-shopping-bag"></i>
+            <span>BUY NOW $69</span>
+        </a>
+    </div>
+
+    <a href="#top" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+
+</body>
+</html>
