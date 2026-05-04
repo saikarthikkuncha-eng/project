@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGA TASK - Chocolate Website</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+        }
+
+        .map-section {
+            width: 100%;
+            height: 80vh; 
+            display: block;
+            background-color: #111; 
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
+        }
+
+        .contact-section {
+            background-color: #ffffff;
+            padding: 100px 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 100px;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-container {
+           position: relative;
+            width: 100%;
+            margin-top: -300px;
+            max-width: 1000px;
+            background-color: #ffffff;
+            padding: 60px;
+            height: 600px;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4); 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .form-left-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #dcdcdc;
+            background-color: transparent;
+            padding: 10px 0;
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: #000;
+            margin-top: 5px;
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .form-group textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .send-btn-wrapper {
+            margin-top: 20px;
+        }
+
+        .send-btn {
+            background-color: transparent;
+            border: 1px solid #1a1a1a;
+            padding: 15px 40px;
+            font-family: 'Lora', serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-left: 130px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        .form-right-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .form-heading {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 42px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        .form-heading span {
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .form-text {
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+
+        .address-info {
+            font-family: 'Lora', serif;
+            font-size: 15px;
+            color: #444;
+            margin: 6px 0;
+            line-height: 1.5;
+        }
+        .bottom-banner-section {
+            width: 100%;
+            height: 70vh; 
+            background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/contact-us-img-1-1024x501.png');
+            margin-top: 50px;
+            margin-bottom: 50px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .site-footer {
+            background-image: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/footer-img.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 80px 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65); 
+            z-index: 1;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .footer-logo span {
+            font-weight: 400;
+        }
+
+        .footer-text {
+            font-family: 'Lora', serif;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #eaeaea;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-circle {
+            background-color: #fce1e6; 
+            color: #1a1a1a;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .footer-social-circle:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        
+        .fixed-right-tags {
+            position: fixed;
+            top: 50%;
+            gap: 20px;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 9999; 
+            display: flex;
+            flex-direction: column;
+            box-shadow: -2px 2px 15px rgba(0,0,0,0.15);
+        }
+
+        .tag-box {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .tag-box:hover {
+            opacity: 0.9;
+        }
+
+        .tag-demo {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            gap: 8px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .tag-demo .number {
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        .tag-demo .text {
+            font-size: 11px;
+            line-height: 1.1;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tag-buy {
+            background-color: #f00047; 
+            color: #ffffff;
+            gap: 12px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .tag-buy i {
+            font-size: 16px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            border: 1px solid #686363;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            text-decoration: none;
+            z-index: 9998;
+            background-color: rgba(255, 255, 255, 0.2); 
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="map-section">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106020.30607624131!2d151.130985586616!3d-33.84752538466144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129838f39a743f%3A0x3017d681632a850!2sSydney%20NSW%2C%20Australia!5e0!3m2!1sen!2sus!4v1714582121345!5m2!1sen!2sus" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            
+            <div class="form-left-col">
+                <div class="form-group">
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <div class="send-btn-wrapper">
+                    <button class="send-btn" type="submit">SEND</button>
+                </div>
+            </div>
+
+            <div class="form-right-col">
+                <h2 class="form-heading"><span>Visit</span> our shops</h2>
+                <p class="form-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <p class="address-info">09:00-19h Monday – Friday</p>
+                <p class="address-info">75-11 Jewett Ave Jersey City, NJ 07304 USA</p>
+                <p class="address-info">+ (1) 555 678 786</p>
+            </div>
+
+        </div>
+    </section>
+     <section class="bottom-banner-section">
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">bridge</div>
+            <div class="footer-text">
+                © Copyright Qode Interactive — All Rights Reserved<br>
+                Proudly Made For You.
+            </div>
+            <div class="footer-socials">
+                <a href="#" class="footer-social-circle" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="footer-social-circle" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="footer-social-circle" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed-right-tags">
+        <a href="#" class="tag-box tag-demo">
+            <span class="number">630+</span>
+            <span class="text">Bridge<br>demos</span>
+        </a>
+        <a href="#" class="tag-box tag-buy">
+            <i class="fas fa-shopping-bag"></i>
+            <span>BUY NOW $69</span>
+        </a>
+    </div>
+
+    <a href="#top" class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+
+</body>
+</html>
