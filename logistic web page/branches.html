@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftMove Logistics - Branches</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        background: #f5f7fb;
+        color: #333;
+      }
+
+      header {
+        width: 100%;
+        padding: 20px 8%;
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #0a4cff;
+        text-decoration: none;
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+      nav ul li {
+        margin: 0 15px;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      nav ul li a:hover {
+        color: #0a4cff;
+      }
+      .login-btn {
+        text-decoration: none;
+        padding: 10px 22px;
+        background: #0a4cff;
+        color: white;
+        border-radius: 30px;
+        transition: 0.3s;
+      }
+      .login-btn:hover {
+        background: #ff7b00;
+      }
+
+      .page-hero {
+        height: 40vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1587293852726-70cdb56c2866");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+      }
+      .page-hero h1 {
+        font-size: 50px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 50px;
+      }
+
+      /* MAIN BRANCHES */
+      .branches-section {
+        padding: 80px 8%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+      .branch-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
+      }
+      .branch-card:hover {
+        transform: translateY(-5px);
+      }
+      .branch-info {
+        padding: 30px;
+      }
+      .branch-info h3 {
+        color: #0a4cff;
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+      .branch-info p {
+        margin-bottom: 10px;
+        color: #555;
+      }
+      .branch-info i {
+        color: #ff7b00;
+        width: 25px;
+      }
+
+      /* NEW: REGIONAL WAREHOUSES */
+      .warehouses {
+        padding: 80px 8%;
+        background: white;
+      }
+      .warehouse-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .warehouse-item {
+        padding: 20px;
+        border-left: 4px solid #ff7b00;
+        background: #f5f7fb;
+        border-radius: 0 10px 10px 0;
+      }
+      .warehouse-item h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      .warehouse-item p {
+        color: #666;
+        font-size: 14px;
+      }
+
+      /* NEW: FRANCHISE CTA */
+      .franchise-cta {
+        padding: 80px 8%;
+        text-align: center;
+        background: linear-gradient(135deg, #0a4cff, #4f7dff);
+        color: white;
+      }
+      .franchise-cta h2 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+      .franchise-cta p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn-outline {
+        padding: 14px 30px;
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+        text-decoration: none;
+        border-radius: 40px;
+        transition: 0.3s;
+        display: inline-block;
+        font-weight: bold;
+      }
+      .btn-outline:hover {
+        background: white;
+        color: #0a4cff;
+      }
+
+      footer {
+        background: #111827;
+        color: white;
+        padding: 60px 8%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+      .footer-box h3 {
+        margin-bottom: 20px;
+      }
+      .footer-box a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        margin-bottom: 10px;
+      }
+      .footer-box a:hover {
+        color: #0a4cff;
+      }
+
+      @media (max-width: 900px) {
+        header {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+      @media (max-width: 600px) {
+        nav ul {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+        .page-hero h1 {
+          font-size: 35px;
+        }
+        .section-title {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="logo">SwiftMove</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="branches.html">Branches</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="login-btn">Login</a>
+    </header>
+
+    <section class="page-hero">
+      <h1>Our Global Network</h1>
+    </section>
+
+    <!-- MAIN BRANCHES -->
+    <section class="branches-section">
+      <div class="branch-card">
+        <div class="branch-info">
+          <h3>New York HQ</h3>
+          <p><i class="fa-solid fa-map-pin"></i> 120 Logistics Ave, NY 10001</p>
+          <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
+          <p><i class="fa-solid fa-envelope"></i> ny@swiftmove.com</p>
+        </div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-info">
+          <h3>London Hub</h3>
+          <p>
+            <i class="fa-solid fa-map-pin"></i> 45 Shipping Lane, London, UK
+          </p>
+          <p><i class="fa-solid fa-phone"></i> +44 20 7946 0958</p>
+          <p><i class="fa-solid fa-envelope"></i> uk@swiftmove.com</p>
+        </div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-info">
+          <h3>Mumbai Terminal</h3>
+          <p>
+            <i class="fa-solid fa-map-pin"></i> Block B, Trade Center, Mumbai
+          </p>
+          <p><i class="fa-solid fa-phone"></i> +91 9876543210</p>
+          <p><i class="fa-solid fa-envelope"></i> india@swiftmove.com</p>
+        </div>
+      </div>
+      <div class="branch-card">
+        <div class="branch-info">
+          <h3>Sydney Center</h3>
+          <p><i class="fa-solid fa-map-pin"></i> 88 Harbor Road, Sydney, AUS</p>
+          <p><i class="fa-solid fa-phone"></i> +61 2 1234 5678</p>
+          <p><i class="fa-solid fa-envelope"></i> aus@swiftmove.com</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION 1: REGIONAL WAREHOUSES -->
+    <section class="warehouses">
+      <h2 class="section-title">Regional Partner Warehouses</h2>
+      <div class="warehouse-grid">
+        <div class="warehouse-item">
+          <h4>Toronto, Canada</h4>
+          <p>Processing facility for North American road freight.</p>
+        </div>
+        <div class="warehouse-item">
+          <h4>Berlin, Germany</h4>
+          <p>European Union central distribution center.</p>
+        </div>
+        <div class="warehouse-item">
+          <h4>Dubai, UAE</h4>
+          <p>Middle-East transit and cargo holding facility.</p>
+        </div>
+        <div class="warehouse-item">
+          <h4>Singapore</h4>
+          <p>South-East Asia port operations and warehousing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION 2: FRANCHISE CTA -->
+    <section class="franchise-cta">
+      <h2>Become a SwiftMove Partner</h2>
+      <p>
+        Looking to expand your local logistics business? Join our global
+        franchise network and get access to our technology, branding, and
+        worldwide routes.
+      </p>
+      <a href="contact.html" class="btn-outline">Apply for Franchise</a>
+    </section>
+
+    <footer>
+      <div class="footer-box">
+        <h3>SwiftMove</h3>
+        <p>Professional logistics & courier services.</p>
+      </div>
+      <div class="footer-box">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="branches.html">Branches</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-box">
+        <h3>Contact</h3>
+        <p>Email: info@swiftmove.com</p>
+        <p>Phone: +91 9876543210</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftMove Logistics - Features</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        background: #f5f7fb;
+        color: #333;
+      }
+
+      header {
+        width: 100%;
+        padding: 20px 8%;
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #0a4cff;
+        text-decoration: none;
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+      nav ul li {
+        margin: 0 15px;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      nav ul li a:hover {
+        color: #0a4cff;
+      }
+      .login-btn {
+        text-decoration: none;
+        padding: 10px 22px;
+        background: #0a4cff;
+        color: white;
+        border-radius: 30px;
+        transition: 0.3s;
+      }
+      .login-btn:hover {
+        background: #ff7b00;
+      }
+
+      .page-hero {
+        height: 40vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1565891741441-64926e441838");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+      }
+      .page-hero h1 {
+        font-size: 50px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 50px;
+      }
+
+      /* CORE FEATURES */
+      .features {
+        padding: 80px 8%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+      .feature-card {
+        background: white;
+        padding: 50px 30px;
+        border-radius: 20px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      }
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+      .feature-card i {
+        font-size: 50px;
+        color: #0a4cff;
+        margin-bottom: 20px;
+      }
+      .feature-card h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+      .feature-card p {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* NEW: HOW IT WORKS */
+      .process {
+        padding: 80px 8%;
+        background: white;
+      }
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        text-align: center;
+      }
+      .process-step {
+        position: relative;
+      }
+      .process-step .step-number {
+        width: 60px;
+        height: 60px;
+        background: #0a4cff;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+      }
+      .process-step h3 {
+        margin-bottom: 10px;
+      }
+      .process-step p {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      /* NEW: ADDITIONAL BENEFITS */
+      .benefits {
+        padding: 80px 8%;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        flex-wrap: wrap;
+      }
+      .benefits-content {
+        flex: 1;
+      }
+      .benefits-content h2 {
+        font-size: 35px;
+        margin-bottom: 20px;
+      }
+      .benefits-content p {
+        line-height: 1.8;
+        margin-bottom: 25px;
+        color: #555;
+      }
+      .benefits-list {
+        list-style: none;
+      }
+      .benefits-list li {
+        margin-bottom: 15px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .benefits-list i {
+        color: #ff7b00;
+        margin-right: 10px;
+      }
+      .benefits-image {
+        flex: 1;
+        text-align: center;
+      }
+      .benefits-image img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      footer {
+        background: #111827;
+        color: white;
+        padding: 60px 8%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+      .footer-box h3 {
+        margin-bottom: 20px;
+      }
+      .footer-box a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        margin-bottom: 10px;
+      }
+      .footer-box a:hover {
+        color: #0a4cff;
+      }
+
+      @media (max-width: 900px) {
+        header {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .benefits {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 600px) {
+        nav ul {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+        .page-hero h1 {
+          font-size: 35px;
+        }
+        .section-title {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="logo">SwiftMove</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="branches.html">Branches</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="login-btn">Login</a>
+    </header>
+
+    <section class="page-hero">
+      <h1>Why Choose Us?</h1>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section style="padding: 80px 8% 0">
+      <h2 class="section-title">Core Features</h2>
+    </section>
+
+    <section class="features" style="padding-top: 0">
+      <div class="feature-card">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h3>Fast Delivery</h3>
+        <p>
+          Quick and secure parcel delivery worldwide. We optimize routes to
+          ensure the fastest delivery times possible.
+        </p>
+      </div>
+      <div class="feature-card">
+        <i class="fa-solid fa-box"></i>
+        <h3>Secure Packaging</h3>
+        <p>
+          Safe handling and premium packaging services to protect your fragile
+          and high-value cargo.
+        </p>
+      </div>
+      <div class="feature-card">
+        <i class="fa-solid fa-location-dot"></i>
+        <h3>Live Tracking</h3>
+        <p>
+          Track your shipment in real-time anytime through our advanced online
+          dashboard system.
+        </p>
+      </div>
+      <div class="feature-card">
+        <i class="fa-solid fa-headset"></i>
+        <h3>24/7 Support</h3>
+        <p>
+          Dedicated customer support team available around the clock to assist
+          with your shipments.
+        </p>
+      </div>
+    </section>
+
+    <!-- NEW SECTION 1: HOW IT WORKS -->
+    <section class="process">
+      <h2 class="section-title">How It Works</h2>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Book Order</h3>
+          <p>
+            Schedule a pickup online or drop off your package at our nearest
+            hub.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Pack & Scan</h3>
+          <p>
+            We securely package your items and scan them into our global
+            tracking system.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Transit</h3>
+          <p>
+            Your package moves swiftly through our optimized air, sea, or land
+            routes.
+          </p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Delivery</h3>
+          <p>
+            Safe, secure, and on-time delivery right to the recipient's
+            doorstep.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION 2: ADDITIONAL BENEFITS -->
+    <section class="benefits">
+      <div class="benefits-content">
+        <h2>Specialized Handling & Security</h2>
+        <p>
+          We don't just move boxes; we handle your business with care. Our
+          advanced infrastructure allows us to transport specialized goods
+          safely.
+        </p>
+        <ul class="benefits-list">
+          <li>
+            <i class="fa-solid fa-check"></i> Climate-controlled transport for
+            sensitive items
+          </li>
+          <li>
+            <i class="fa-solid fa-check"></i> Comprehensive cargo insurance
+            coverage
+          </li>
+          <li>
+            <i class="fa-solid fa-check"></i> Custom clearance assistance for
+            international shipping
+          </li>
+          <li>
+            <i class="fa-solid fa-check"></i> Eco-friendly fleet reducing carbon
+            footprint
+          </li>
+        </ul>
+      </div>
+      <div class="benefits-image">
+        <img
+          src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866"
+          alt="Specialized Logistics"
+        />
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-box">
+        <h3>SwiftMove</h3>
+        <p>Professional logistics & courier services.</p>
+      </div>
+      <div class="footer-box">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="branches.html">Branches</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-box">
+        <h3>Contact</h3>
+        <p>Email: info@swiftmove.com</p>
+        <p>Phone: +91 9876543210</p>
+      </div>
+    </footer>
+  </body>
+</html>
