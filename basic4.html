@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+</head>
+
+<body>
+    <script>
+
+
+
+        let movies = [
+            { id: 1, title: "Baahubali", genre: "Action", year: 2015, rating: 8.3, language: "Telugu" },
+            { id: 2, title: "Bajrangi Bhaijaan", genre: "Drama", year: 2015, rating: 8.1, language: "Hindi" },
+            { id: 3, title: "Kaththi", genre: "Action", year: 2014, rating: 7.8, language: "Tamil" },
+            { id: 4, title: "Sultan", genre: "Sport", year: 2016, rating: 7.9, language: "Hindi" },
+            { id: 5, title: "Mersal", genre: "Action", year: 2017, rating: 8.0, language: "Tamil" },
+            { id: 6, title: "Padmaavat", genre: "Historical", year: 2018, rating: 7.8, language: "Hindi" },
+            { id: 7, title: "Saaho", genre: "Action", year: 2019, rating: 7.0, language: "Telugu" },
+            { id: 8, title: "Asuran", genre: "Drama", year: 2019, rating: 8.4, language: "Tamil" },
+            { id: 9, title: "War", genre: "Action", year: 2019, rating: 7.7, language: "Hindi" },
+            { id: 10, title: "Pushpa", genre: "Action", year: 2021, rating: 8.0, language: "Telugu" }
+        ];
+
+
+        // 1. DISPLAY ALL MOVIES
+        console.log("1. DISPLAY ALL MOVIES");
+        for (let i = 0; i < movies.length; i++) {
+            console.log("ID: " + movies[i].id + ", Title: " + movies[i].title + ", Genre: " + movies[i].genre + ", Year: " + movies[i].year + ", Rating: " + movies[i].rating + ", Language: " + movies[i].language);
+        }
+
+
+
+
+
+        // 2. SEARCH MOVIE BY TITLE
+        console.log("2. SEARCH MOVIE BY TITLE");
+        const searchTitle = prompt("Enter movie title to search:");
+        const foundMovie = movies.find(movie => movie.title.toLowerCase() === searchTitle.toLowerCase());
+        console.log(foundMovie);
+
+
+
+
+
+        // 3. DISPLAY MOVIES BY GENRE
+        console.log("3. DISPLAY MOVIES BY GENRE");
+        const targetGenre = prompt("Enter genre (e.g., Action, Comedy, Sci-Fi, Drama):");
+        const genrefilter = movies.filter(movie => movie.genre.toLowerCase() === targetGenre.toLowerCase());
+        const genreTitles = genrefilter.map(movie => movie.title);
+        console.log(genreTitles);
+
+
+
+
+
+        // 4. DISPLAY MOVIES BY LANGUAGE
+        console.log("4. DISPLAY MOVIES BY LANGUAGE");
+        const targetLanguage = prompt("Enter language (e.g., Telugu, Hindi, Tamil):");
+        const languagefilter = movies.filter(movie => movie.language.toLowerCase() === targetLanguage.toLowerCase());
+        const languageTitles = languagefilter.map(movie => movie.title);
+        console.log(languageTitles);
+
+
+
+
+
+        // 5. FIND HIGHEST RATED MOVIE
+        console.log("5. HIGHEST RATED MOVIE");
+        const highestRatedMovie = Math.max(...movies.map(movie => movie.rating));
+        console.log(highestRatedMovie);
+
+
+
+
+
+
+
+        // 6. FIND LOWEST RATED MOVIE
+        console.log("6. LOWEST RATED MOVIE");
+        const lowestRatedMovie = Math.min(...movies.map(movie => movie.rating));
+        console.log(lowestRatedMovie);
+
+
+
+
+
+
+        // 7. DISPLAY MOVIES RELEASED AFTER A SPECIFIC YEAR
+        console.log("7. MOVIES RELEASED AFTER A SPECIFIC YEAR");
+        const targetYear = Number(prompt("Enter release year threshold (e.g., 2023):"));
+        const postYearfilter = movies.filter(movie => movie.year > targetYear);
+        const postYearTitles = postYearfilter.map(movie => movie.title);
+        console.log(postYearTitles);
+
+
+
+
+
+
+        // 8. DISPLAY MOVIES WITH RATING GREATER THAN 8
+        console.log("8. MOVIES WITH RATING GREATER THAN 8");
+        const greaterrating = movies.filter(movie => movie.rating > 8);
+        const highRatedTitles = greaterrating.map(movie => movie.title);
+        console.log(highRatedTitles);
+
+
+
+
+
+
+        // 9. COUNT MOVIES BY GENRE
+        console.log("9. COUNT MOVIES BY GENRE");
+        const targetGenrecount = prompt("Enter genre to count (e.g., Action, Comedy, Sci-Fi, Drama):");
+        const genrecountfilter = movies.filter(movie => movie.genre.toLowerCase() === targetGenre.toLowerCase());
+        const genrecountTitles = genrecountfilter.map(movie => movie.title);
+        console.log(genrecountTitles.concat(" - Total: " + genrecountTitles.length));
+
+
+
+
+
+        // 10. SORT MOVIES BY RATING (Highest to Lowest)
+        console.log("10. SORT MOVIES BY RATING");
+        const sortedByRating = [...movies].sort((a, b) => b.rating - a.rating);
+        console.log(sortedByRating);
+
+
+
+
+
+        // 11. SORT MOVIES BY RELEASE YEAR (Newest to Oldest)
+        console.log("11. SORT MOVIES BY RELEASE YEAR");
+        const sortedByYear = [...movies].sort((a, b) => b.year - a.year);
+        console.log(sortedByYear);
+
+
+
+
+
+        // 12. GENERATE MOVIE STATISTICS REPORT
+        console.log("12. MOVIE REPORT");
+        const totalMovies = movies.length;
+        const reportHighest = Math.max(...movies.map(movie => movie.rating));
+        const reportLowest = Math.min(...movies.map(movie => movie.rating));
+        const totalRatingSum = movies.reduce((sum, movie) => sum + movie.rating, 0);
+        const averageRating = totalRatingSum / totalMovies;
+
+        const actionCount = movies.filter(movie => movie.genre === "Action").length;
+        const dramaCount = movies.filter(movie => movie.genre === "Drama").length;
+        const comedyCount = movies.filter(movie => movie.genre === "Comedy").length;
+        const sciFiCount = movies.filter(movie => movie.genre === "Sci-Fi").length;
+
+
+        console.log("Total Movies : " + totalMovies);
+        console.log("Highest Rated Movie : " + reportHighest.title);
+        console.log("Lowest Rated Movie : " + reportLowest.title);
+        console.log("Average Rating : " + averageRating);
+        console.log("Action Movies : " + actionCount);
+        console.log("Drama Movies : " + dramaCount);
+        console.log("Comedy Movies : " + comedyCount);
+        console.log("Sci-Fi Movies : " + sciFiCount);
+
+
+
+
+    </script>
+</body>
+
+</html>
